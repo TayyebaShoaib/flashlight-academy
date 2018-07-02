@@ -29,7 +29,7 @@
     </div>
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header_area animated">
+    <header class="header_area animated page-header">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-center">
                 <!-- Menu Area Start -->
@@ -44,8 +44,7 @@
                                 <ul class="navbar-nav ml-auto" id="nav">
                                     <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="course.html">Courses</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#timetable">Timetable</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -140,7 +139,7 @@
                 <div class="col-12 text-center">
                     <!-- Heading Text  -->
                     <div class="section-heading">
-                        <h2>Browse Our Courses</h2>
+                        <h2>Popular Courses</h2>
                         <div class="line-shape"></div>
                     </div>
                 </div>
@@ -364,7 +363,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="membership-description">
-                        <h2>Save money with packages</h2>
+                        <h2>Save Money With Packages</h2>
                         <p>SAVE upto 25% by booking any course with other related courses.</p>
                     </div>
                 </div>

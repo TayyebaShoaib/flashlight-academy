@@ -21,6 +21,14 @@
 :: 14.0 Footer Area CSS Start
 -------------------------- */
 
+/* --- [Single Course Stylesheet] ----
+:: a) Single Course Intro
+:: b) 
+:: c) 
+:: d) 
+:: e) 
+-------------------------- */
+
 @import url('https://fonts.googleapis.com/css?family=Cabin:400,500,700|Montserrat:400,500,700');
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:700i');
 @import 'css/bootstrap.min.css';
@@ -327,6 +335,7 @@ p {
     z-index: 99;
     top: 0;
     padding: 0 4%;
+    /* background: linear-gradient(to left, #7873ed, #a865e1); */
 }
 
 .menu_area .navbar-brand {
@@ -652,11 +661,11 @@ p {
 }
 
 .app_screenshots_slides .single-shot {
-    opacity: 0.7;
+    opacity: 0.8;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
-    -webkit-transform: scale(0.85);
-    -ms-transform: scale(0.85);
-    transform: scale(0.85)
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9)
 }
 
 .app_screenshots_slides .center .single-shot {
@@ -1093,4 +1102,89 @@ p {
 
 .copyright-text > p {
     margin-bottom: 0;
+}
+
+/* --------------------------
+:: a) General Pages
+-------------------------- */
+
+.page-header {
+    background: linear-gradient(to left, #7873ed, #a865e1);
+    box-shadow: 2px 2px 7px 1px #ccc;
+}
+
+/* --------------------------
+:: a) Single Course Intro
+-------------------------- */
+
+.single-course-intro {
+    background-image: url(img/course/beginner-php.jpg);
+    background-color: yellow;
+    height: 400px;  
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.single-course-intro-content {
+    background-color: #fff;
+    width: 360px;
+    height: auto;
+    border-radius: 6px;
+    text-align: center;
+    padding: 30px;
+    box-shadow: 1px 1px 10px 0px #d8d7d7, 1px 1px 10px 0px #d8d7d7;
+}
+.single-course-intro-content p {
+    font-size: 20px;
+}
+.single-course-intro-content span {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 14px;
+    margin-right: 10px;
+}
+.single-course-intro-content span:nth-child(2) {
+    font-size: 5px;
+}
+.single-course-content .about-course {
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+.single-course-content .side-widget {
+    padding: 35px 30px;
+    border: 1px solid #ebebeb;
+}
+.single-course-content .side-widget h4 {
+    margin-bottom: 20px;
+}
+.single-course-content .side-widget h6 {
+    color: rgba(0, 0, 0, 0.3);
+}
+.single-course-content .instructor {
+    border: 1px solid #ebebeb;
+    margin: 20px 0;
+    padding: 35px 30px 19px;
+}
+.single-course-content .instructor h4 small {
+    display: block;
+}
+.single-course-content .dates-panel {
+    border: 1px solid #5b32b4;
+    margin-top: 20px;
+}
+.single-course-content .dates-panel h3 {
+    font-size: 20px;
+    background-color: #884bdf;
+    color: #fff;
+}
+.single-course-content .dates-panel .panel-body {
+    padding: 15px;
+}
+.single-course-content .dates-panel table {
+    width: 100%;
+}
+.single-course-content .dates-panel table a {
+    background: #884bdf;
+    color: #fff;
+    padding: 5px 8px;
 }
