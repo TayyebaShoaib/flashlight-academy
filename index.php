@@ -1,62 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    <!-- Title -->
-    <title>Flashlight Academy</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
-
-    <!-- Core Stylesheet -->
-    <link href="style.css" rel="stylesheet">
-
-    <!-- Responsive CSS -->
-    <link href="css/responsive.css" rel="stylesheet">
-
-</head>
-
-<body>
-    <!-- Preloader Start -->
-    <div id="preloader">
-        <div class="colorlib-load"></div>
-    </div>
-
-    <!-- ***** Header Area Start ***** -->
-    <header class="header_area animated page-header">
-        <div class="container-fluid">
-            <div class="row align-items-center justify-content-center">
-                <!-- Menu Area Start -->
-                <div class="col-12 col-lg-10">
-                    <div class="menu_area">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <!-- Logo -->
-                            <a class="navbar-brand" href="#">fa.</a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                            <!-- Menu Area -->
-                            <div class="collapse navbar-collapse" id="ca-navbar">
-                                <ul class="navbar-nav ml-auto" id="nav">
-                                    <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="course.html">Courses</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#timetable">Timetable</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
+<?php
+    include('includes/header.php');
+    include('includes/connect.php');
+    $query = "SELECT courses.course_id, name, cost, start_date, end_date, time, days
+              FROM course_details, courses
+              WHERE course_details.course_id = courses.course_id
+              ORDER BY RAND()
+              LIMIT 6";
+    $result = $connect->query($query);          
+?>
 
     <!-- ***** Wellcome Area Start ***** -->
     <section class="wellcome_area clearfix" id="home">
@@ -65,12 +16,12 @@
                 <div class="col-12 col-md">
                     <div class="wellcome-heading">
                         <h2>Flashlight Academy</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit illum nesciunt veritatis quis illo est ab eius reiciendis?</p>
+                        <p>Study at times that suit you, weekends, evenings or daytime in small classes that focus your learning.</p>
                     </div>
                     <div class="get-start-area">
                         <!-- Form Start -->
-                        <form action="#" method="post" class="form-inline">
-                            <input type="submit" class="submit" value="View Courses">
+                        <form action="contact.php" method="post" class="form-inline">
+                            <input type="submit" class="submit" value="Contact Us">
                         </form>
                         <!-- Form End -->
                     </div>
@@ -104,8 +55,8 @@
                         <div class="single-icon">
                             <i class="ti-mobile" aria-hidden="true"></i>
                         </div>
-                        <h4>Easy to use</h4>
-                        <p>We build pretty complex tools and this allows us to take designs and turn them into functional quickly and easily</p>
+                        <h4>Convenient Location</h4>
+                        <p>Our training venue is situated in the heart of Central London, just 5 minutes walk from the nearest tube station.</p>
                     </div>
                 </div>
                 <!-- Single Special Area -->
@@ -114,8 +65,8 @@
                         <div class="single-icon">
                             <i class="ti-ruler-pencil" aria-hidden="true"></i>
                         </div>
-                        <h4>Powerful Design</h4>
-                        <p>We build pretty complex tools and this allows us to take designs and turn them into functional quickly and easily</p>
+                        <h4>Affordable Prices</h4>
+                        <p>We offer competitive prices rivalling other training institutes without compromising on quality or satisfaction.</p>
                     </div>
                 </div>
                 <!-- Single Special Area -->
@@ -124,8 +75,8 @@
                         <div class="single-icon">
                             <i class="ti-settings" aria-hidden="true"></i>
                         </div>
-                        <h4>Customizability</h4>
-                        <p>We build pretty complex tools and this allows us to take designs and turn them into functional quickly and easily</p>
+                        <h4>High Quality Training</h4>
+                        <p>Our tutors come from a professional background and a mixture of practical work and theory to maximize student's learning.</p>
                     </div>
                 </div>
             </div>
@@ -150,96 +101,24 @@
                 <div class="col-12">
                     <!-- App Screenshots Slides  -->
                     <div class="app_screenshots_slides owl-carousel">
+                        <?php while($row = mysqli_fetch_assoc($result)): ?>
                         <div class="single-shot">
-                            <!-- <img src="img/scr-img/app-1.jpg" alt=""> -->
                             <div class="single-shot card" style="max-width:305px">
-                                <img class="card-img-top" src="img/scr-img/php.png" alt="PHP" style="width:100%">
+                                <!-- <img class="card-img-top" src="img/scr-img/php.png" alt="PHP" style="width:100%"> -->
                                 <div class="card-body">
-                                  <h4 class="card-title text-center">PHP for Beginners</h4>
+                                  <h4 class="card-title text-center"><?php echo $row['name'] ?></h4>
                                   <p class="card-text text-center">
-                                      <span>£170</span>
-                                      <p class="text-center">02 Jul 2018 - 18 Jul 2018 <br/>
-                                        3 Mondays & 3 Wednesdays, <br/>6:30pm - 9pm</p>
-                                  </p>
-                                  <a href="#">View Course</a>
+                                      <span><?php echo "£" . $row['cost']; ?></span>
+                                    </p>
+                                    <p class="text-center">
+                                        <?php echo $row['start_date']; ?> - <?php echo $row['end_date']; ?><br/>
+                                      <?php echo $row['days']; ?>, <br/><?php echo $row['time']; ?>
+                                    </p>
+                                  <a href="course.php?id=<?php echo $row['course_id']; ?>" >View Course</a>
                                 </div>
                               </div>
                         </div>
-                        <div class="single-shot">
-                            <!-- <img src="img/scr-img/app-2.jpg" alt=""> -->
-                            <div class="single-shot card" style="max-width:305px">
-                                <img class="card-img-top" src="img/scr-img/javascript.jpg" alt="javascript" style="width:100%">
-                                <div class="card-body">
-                                  <h4 class="card-title text-center">JavaScript</h4>
-                                  <p class="card-text text-center">
-                                      <span>£250</span>
-                                      <p class="text-center">02 Jul 2018 - 18 Jul 2018 <br/>
-                                        3 Mondays & 3 Wednesdays, <br/>6:30pm - 9pm</p>
-                                  </p>
-                                  <a href="#">View Course</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="single-shot">
-                            <!-- <img src="img/scr-img/app-3.jpg" alt=""> -->
-                            <div class="single-shot card" style="max-width:305px">
-                                <img class="card-img-top" src="img/scr-img/wordpress.png" alt="wordpress" style="width:100%">
-                                <div class="card-body">
-                                  <h4 class="card-title text-center">Web Design with WordPress</h4>
-                                  <p class="card-text text-center">
-                                      <span>£170</span>
-                                      <p class="text-center">02 Jul 2018 - 18 Jul 2018 <br/>
-                                        3 Mondays & 3 Wednesdays, <br/>6:30pm - 9pm</p>
-                                  </p>
-                                  <a href="#">View Course</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="single-shot">
-                            <!-- <img src="img/scr-img/app-4.jpg" alt=""> -->
-                            <div class="single-shot card" style="max-width:305px">
-                                <img class="card-img-top" src="img/scr-img/webdesign.jfif" alt="wordpress" style="width:100%">
-                                <div class="card-body">
-                                  <h4 class="card-title text-center">Web Design with HTML and CSS</h4>
-                                  <p class="card-text text-center">
-                                      <span>£250</span>
-                                      <p class="text-center">02 Jul 2018 - 18 Jul 2018 <br/>
-                                        3 Mondays & 3 Wednesdays, <br/>6:30pm - 9pm</p>
-                                  </p>
-                                  <a href="#">View Course</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="single-shot">
-                            <!-- <img src="img/scr-img/app-5.jpg" alt=""> -->
-                            <div class="single-shot card" style="max-width:305px">
-                                <img class="card-img-top" src="img/scr-img/uxdesign.jfif" alt="wordpress" style="width:100%">
-                                <div class="card-body">
-                                  <h4 class="card-title text-center">User Experience (UX) Design</h4>
-                                  <p class="card-text text-center">
-                                      <span>£70</span>
-                                      <p class="text-center">02 Jul 2018 - 18 Jul 2018 <br/>
-                                        3 Mondays & 3 Wednesdays, <br/>6:30pm - 9pm</p>
-                                  </p>
-                                  <a href="#">View Course</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="single-shot">
-                            <!-- <img src="img/scr-img/app-3.jpg" alt=""> -->
-                            <div class="single-shot card" style="max-width:305px">
-                                <img class="card-img-top" src="img/scr-img/python.png" alt="wordpress" style="width:100%">
-                                <div class="card-body">
-                                  <h4 class="card-title text-center">Python Programming for Beginners</h4>
-                                  <p class="card-text text-center">
-                                      <span>£170</span>
-                                      <p class="text-center">02 Jul 2018 - 18 Jul 2018 <br/>
-                                        3 Mondays & 3 Wednesdays, <br/>6:30pm - 9pm</p>
-                                  </p>
-                                  <a href="#">View Course</a>
-                                </div>
-                              </div>
-                        </div>
+                        <?php endwhile; ?>
                     </div>
                 </div>
             </div>
@@ -259,7 +138,7 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </div>
                             <div class="client-description text-center">
-                                <p>“ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit porro iure quaerat impedit harum atque distinctio at, dicta eius. Optio voluptas soluta eligendi debitis tenetur. ”</p>
+                                <p>“ An excellent course which has given me the confidence to amend HTML and to start constructing my own web site from scratch. I really liked it. It was such a useful thing to do. ”</p>
                             </div>
                             <div class="star-icon text-center">
                                 <i class="ion-ios-star"></i>
@@ -270,7 +149,7 @@
                             </div>
                             <div class="client-name text-center">
                                 <h5>Aigars Silkalns</h5>
-                                <p>Ceo Colorlib</p>
+                                <p>HTML Forms Learner</p>
                             </div>
                         </div>
                         <!-- Client Feedback Text  -->
@@ -279,7 +158,7 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </div>
                             <div class="client-description text-center">
-                                <p>“ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui commodi illo eos, ipsa, laudantium accusantium repellat praesentium animi provident rerum vel aut dicta,  deserunt quaerat modi nostrum. ”</p>
+                                <p>“ I though it was a really good class and I learnt a lot in the time we had. The teacher was very knowledgeable and demonstrated everything in a way which was easy to follow. The hand outs were really useful too.. ”</p>
                             </div>
                             <div class="star-icon text-center">
                                 <i class="ion-ios-star"></i>
@@ -290,7 +169,7 @@
                             </div>
                             <div class="client-name text-center">
                                 <h5>Jennifer</h5>
-                                <p>Developer</p>
+                                <p>Developer Student</p>
                             </div>
                         </div>
                         <!-- Client Feedback Text  -->
@@ -299,7 +178,7 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </div>
                             <div class="client-description text-center">
-                                <p>“ Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium obcaecati labore, magni nulla aperiam amet eligendi! Similique voluptatibus  excepturi in facere, fuga voluptatem ipsa laboriosam? Officia. ”</p>
+                                <p>“ Great value and class size. The teacher is friendly and patient. I had no idea about website design before this course but by the end I had the basics for my very own website. ”</p>
                             </div>
                             <div class="star-icon text-center">
                                 <i class="ion-ios-star"></i>
@@ -310,7 +189,7 @@
                             </div>
                             <div class="client-name text-center">
                                 <h5>Helen</h5>
-                                <p>Marketer</p>
+                                <p>Web Design Student</p>
                             </div>
                         </div>
                         <!-- Client Feedback Text  -->
@@ -319,7 +198,7 @@
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </div>
                             <div class="client-description text-center">
-                                <p>“ Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem modi, blanditiis rem iste, quas esse officiis voluptas animi, error ullam debitis istinctio magni repudiandae repellendus adipisci. ”</p>
+                                <p>“ My tutor is passionate, engaging and extremely knowledgeable Developer/designer. Highly recommend her and the academy. ”</p>
                             </div>
                             <div class="star-icon text-center">
                                 <i class="ion-ios-star"></i>
@@ -329,8 +208,8 @@
                                 <i class="ion-ios-star"></i>
                             </div>
                             <div class="client-name text-center">
-                                <h5>Henry smith</h5>
-                                <p>Developer</p>
+                                <h5>Henry Smith</h5>
+                                <p>Database Student</p>
                             </div>
                         </div>
                     </div>
@@ -363,13 +242,13 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="membership-description">
-                        <h2>Save Money With Packages</h2>
-                        <p>SAVE upto 25% by booking any course with other related courses.</p>
+                        <h2>Enhance Your Employability</h2>
+                        <p>We teach the courses that are the most demanded by the employers. Contact us to find out more.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="get-started-button wow bounceInDown" data-wow-delay="0.5s">
-                        <a href="#">Enrol Now</a>
+                        <a href="contact.php">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -390,20 +269,10 @@
             <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
             <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
         </div>
-        <div class="footer-menu">
-            <nav>
-                <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Terms &amp; Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
         <!-- Foooter Text-->
         <div class="copyright-text">
             <!-- ***** Removing this text is now allowed! This template is licensed under CC BY 3.0 ***** -->
-            <p>Copyright ©2018 Ca. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+            <p>Copyright ©2018 Flashlight Academy. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
         </div>
     </footer>
     <!-- ***** Footer Area Start ***** -->

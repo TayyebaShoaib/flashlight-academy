@@ -23,8 +23,8 @@
 
 /* --- [Single Course Stylesheet] ----
 :: a) Single Course Intro
-:: b) 
-:: c) 
+:: b) Timetable Page
+:: c) Contact Page
 :: d) 
 :: e) 
 -------------------------- */
@@ -426,7 +426,41 @@ p {
 .header_area.sticky .navbar {
     padding: 0;
 }
+.dropdown-menu {
+	min-width: 200px;
+}
+.dropdown-menu.columns-3 {
+	min-width: 600px;
+}
+.dropdown-menu li a {
+	padding: 5px 15px;
+	font-weight: 300;
+}
+.dropdown-menu li h5 {
+	padding: 5px 15px;
+}
+.multi-column-dropdown {
+	list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
 
+.multi-column-dropdown li a {
+	display: block;
+	clear: both;
+	line-height: 1.428571429;
+	color: #333;
+	white-space: normal;
+}
+.multi-column-dropdown li a:hover {
+	background-color: #e2e1e7;
+}
+@media (max-width: 767px) {
+	.dropdown-menu.multi-column {
+		min-width: 240px !important;
+		overflow-x: hidden;
+	}
+}
 
 /* --------------------------
 :: 3.0 Wellcome Area CSS
@@ -668,6 +702,16 @@ p {
     transform: scale(0.9)
 }
 
+.app_screenshots_slides .card {
+    border-radius: 10px;
+    padding: 20px 0;
+    background: #4d5b75;
+    box-shadow: 15px 15px 0 #fb397d;
+}
+
+.app_screenshots_slides .card-title, .app_screenshots_slides .card-body p {
+    color: #fff;
+}
 .app_screenshots_slides .center .single-shot {
     opacity: 1;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -695,6 +739,10 @@ p {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+}
+
+.owl-stage {
+    padding: 25px 0;
 }
 
 .app-screenshots-area a:hover {
@@ -1073,31 +1121,12 @@ p {
     margin-bottom: 15px;
 }
 
-.footer-menu ul li {
-    display: inline-block;
-}
-
-.footer-menu ul li a {
-    border-right: 2px solid #726a84;
-    display: block;
-    padding: 0 7.5px;
-    color: #726a84;
-}
-
 .footer-social-icon > a .active {
     background: #fb397d;
 }
 
-.footer-menu ul li:last-child a {
-    border-right: 0 solid #ddd;
-}
-
 .footer-social-icon {
     margin-bottom: 30px;
-}
-
-.footer-menu {
-    margin-bottom: 15px;
 }
 
 .copyright-text > p {
@@ -1109,8 +1138,9 @@ p {
 -------------------------- */
 
 .page-header {
-    background: linear-gradient(to left, #7873ed, #a865e1);
-    box-shadow: 2px 2px 7px 1px #ccc;
+    /* background: linear-gradient(to left, #6156e9, #834cdf); */
+    /* box-shadow: 2px 2px 7px 1px #ccc; */
+    background-image: url(img/bg-img/welcome-bg.png);
 }
 
 /* --------------------------
@@ -1119,12 +1149,13 @@ p {
 
 .single-course-intro {
     background-image: url(img/course/beginner-php.jpg);
-    background-color: yellow;
     height: 400px;  
-    margin-top: 70px;
+    margin-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 .single-course-intro-content {
     background-color: #fff;
@@ -1146,24 +1177,43 @@ p {
 .single-course-intro-content span:nth-child(2) {
     font-size: 5px;
 }
+.single-course-content ul {
+    color: #726a84;
+    margin: 0 0 25px 20px; 
+}
+.single-course-content ul li {
+    list-style-type: disc;
+}
 .single-course-content .about-course {
     padding: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+} 
+.single-course-content .side-widget .features {
+    min-width: 350px;
 }
-.single-course-content .side-widget {
-    padding: 35px 30px;
+.single-course-content .side-widget .features table {
+    width: 100%; 
+}
+.single-course-content .features table td {
     border: 1px solid #ebebeb;
+    padding-top: 5px; 
 }
-.single-course-content .side-widget h4 {
-    margin-bottom: 20px;
+.single-course-content {
+    padding-top: 100px;
+}
+.single-course-content .side-widget .features h4 {
+    background-color: #884bdf;
+    margin: 0;
+    color: #fff;
+    padding: 5px 0;
 }
 .single-course-content .side-widget h6 {
-    color: rgba(0, 0, 0, 0.3);
+    color: #726a84;
 }
 .single-course-content .instructor {
     border: 1px solid #ebebeb;
-    margin: 20px 0;
     padding: 35px 30px 19px;
+    margin-top: 20px;
 }
 .single-course-content .instructor h4 small {
     display: block;
@@ -1183,8 +1233,88 @@ p {
 .single-course-content .dates-panel table {
     width: 100%;
 }
+.single-course-content .dates-panel table .enrol {
+    min-width: 120px;
+}
 .single-course-content .dates-panel table a {
     background: #884bdf;
     color: #fff;
     padding: 5px 8px;
+}
+.single-course-content .question {
+    border: 1px solid #ebebeb;
+    margin-top: 20px;
+}
+.single-course-content .question h3 {
+    font-size: 18px;
+    color: #fff;
+    padding: 7px;
+    background: #884bdf;
+}
+.single-course-content .question p {
+    padding: 5px;
+}
+
+/* --------------------------
+:: b) Timetable Page
+-------------------------- */
+
+div.timetable table {
+    position: relative;
+    top: 160px;
+    margin-bottom: 120px;
+}
+
+/* --------------------------
+:: c) Contact Page
+-------------------------- */
+
+section#contact {
+    position: relative;
+    top: 90px;
+    margin-bottom: 120px;
+}
+#map {
+    position: relative;
+    top: 90px;
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+}
+input[type='submit'] {
+    cursor: pointer;
+}
+.thanks, .required {
+    color: #fb397d;
+}
+
+/* --------------------------
+:: c) FAQ Page
+-------------------------- */
+
+.faq {
+    position: relative;
+    top: 160px;
+    margin-bottom: 120px;
+}
+.faq h3 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.faq .btn-link {
+    color: #884bdf;
+}
+
+/* --------------------------
+:: c) About Page
+-------------------------- */
+.about {
+    position: relative;
+    top: 160px;
+    margin-bottom: 120px;
+}
+.about iframe {
+    max-width: 550px;
+}
+.about ul li {
+    list-style-type: disc;
 }
